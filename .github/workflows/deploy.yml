@@ -31,3 +31,4 @@ jobs:
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
           publish_dir: ./site
+          publish_branch: gh-pages   # 👈 指定发布分支
