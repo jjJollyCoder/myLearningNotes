@@ -1,0 +1,1 @@
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"mermaid-examples/","title":"Mermaid \u56fe","text":"<p>graph TD   A[\u5f00\u59cb] --&gt; B{\u6761\u4ef6}   B --&gt;|\u662f| C[\u64cd\u4f5c1]   B --&gt;|\u5426| D[\u64cd\u4f5c2]</p>"}]}
