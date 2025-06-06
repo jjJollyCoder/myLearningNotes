@@ -1,0 +1,11 @@
+site_name: My Learning Notes
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Flask 基础: flask-basics.md
+  - Bootstrap 样式: bootstrap-notes.md
+  - Mermaid 图: mermaid-examples.md
+  - Git 多账户与 SSH: git-accounts-ssh.md
+  - 数据库与 API: database-api.md
