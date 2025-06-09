@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://jjjollycoder.github.io/myLearningNotes/%20deployment/ci-cd/">
+        <link rel="canonical" href="https://jjjollycoder.github.io/myLearningNotes/deployment/docker-deployment/">
       
       
+        <link rel="prev" href="../github-pages-mkdocs-deployment-case/">
+      
+      
+        <link rel="next" href="../ci-cd/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>使用 GitHub Actions 实现自动部署 - My Learning Notes</title>
+        <title>Docker 部署 - My Learning Notes</title>
       
     
     
@@ -60,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#github-actions" class="md-skip">
+        <a href="#docker-flask" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              使用 GitHub Actions 实现自动部署
+              Docker 部署
             
           </span>
         </div>
@@ -553,18 +557,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -580,7 +586,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             部署与上线
@@ -594,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/github-pages-mkdocs-deployment-case.md" class="md-nav__link">
+      <a href="../github-pages-mkdocs-deployment-case/" class="md-nav__link">
         
   
   
@@ -614,10 +620,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../deployment/docker-deployment.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Docker 部署
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -628,6 +656,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建 Dockerfile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动容器
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      多文件结构时注意事项
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -640,7 +715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/ci-cd.md" class="md-nav__link">
+      <a href="../ci-cd/" class="md-nav__link">
         
   
   
@@ -758,9 +833,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#githubworkflowsdeployyml" class="md-nav__link">
+  <a href="#dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
-      创建 .github/workflows/deploy.yml
+      创建 Dockerfile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动容器
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      多文件结构时注意事项
     </span>
   </a>
   
@@ -782,36 +875,31 @@
 
 
 
-<h1 id="github-actions">使用 GitHub Actions 实现自动部署</h1>
-<h2 id="githubworkflowsdeployyml">创建 <code>.github/workflows/deploy.yml</code></h2>
-<p>```yaml
-name: Deploy Docs</p>
-<p>on:
-  push:
-    branches: [ main ]</p>
-<p>jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3</p>
-<pre><code>  - name: 安装 Python
-    uses: actions/setup-python@v4
-    with:
-      python-version: 3.10
+<h1 id="docker-flask">使用 Docker 部署 Flask 项目</h1>
+<h2 id="dockerfile">创建 <code>Dockerfile</code></h2>
+<pre><code class="language-dockerfile">FROM python:3.10-slim
 
-  - name: 安装 MkDocs
-    run: |
-      pip install mkdocs mkdocs-material
+WORKDIR /app
 
-  - name: 部署到 GitHub Pages
-    run: mkdocs gh-deploy --force
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [&quot;python&quot;, &quot;app.py&quot;]
+````
+
+## 构建镜像
+
+```bash
+docker build -t flask-app .
 </code></pre>
-<pre><code>
-## 自动部署说明
-
-* 每次 `main` 分支代码更新，将自动重新构建并发布文档。
-
+<h2 id="_1">启动容器</h2>
+<pre><code class="language-bash">docker run -d -p 5000:5000 flask-app
 </code></pre>
+<h2 id="_2">多文件结构时注意事项</h2>
+<p>确保 <code>app.py</code>、模块和配置路径正确挂载进容器中。</p>
+<p>````</p>
 
 
 
