@@ -3,10 +3,27 @@ theme:
   name: material
 
 nav:
-  - Home: index.md
-  - Flask 基础: flask-basics.md
-  - Bootstrap 样式: bootstrap-notes.md
-  - Mermaid 图: mermaid-examples.md
-  - Git 多账户与 SSH: git-accounts-ssh.md
-  - 数据库与 API: database-api.md
-  - vscode基础: vscode.md
+  - 首页: index.md
+
+  - 环境配置:
+      - Git & SSH 配置: setup/git-accounts-ssh.md
+      - VSCode 使用: setup/vscode.md
+      - Python 虚拟环境: setup/python-virtualenv.md
+
+  - 开发基础:
+      - Flask 基础: development/flask-basics.md
+      - 数据库 API 使用: development/database-api.md
+      - ORM(SQLAlchemy): development/orm-sqlalchemy.md
+      - Bootstrap 笔记: development/bootstrap-notes.md
+
+  - 可视化与文档:
+      - Mermaid 示例: visualization/mermaid-examples.md
+      - Markdown 编写规范: visualization/markdown-style-guide.md
+
+  - 部署与上线:
+      - GitHub Pages 部署案例: deployment/github-pages-mkdocs-deployment-case.md
+      - Docker 部署: deployment/docker-deployment.md
+      - CI/CD 自动部署: deployment/ci-cd.md
+
+  - 版本记录:
+      - 更新日志: changelog.md
