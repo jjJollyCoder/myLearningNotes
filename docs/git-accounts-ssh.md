@@ -195,10 +195,15 @@ git push origin main
 ---
 ## 💡 查看本地.ssh/config
 
-* cat ~/.ssh/config
+```bash
+cat ~/.ssh/config
+```
+本地示例：
+
+```ssh
 # 工作账号
 Host github.com-work
-  HostName github.siri.apple.com
+  HostName github.company.com
   User git
   IdentityFile ~/.ssh/id_rsa
   IdentitiesOnly yes
@@ -209,3 +214,4 @@ Host github.com-personal
   User git
   IdentityFile ~/.ssh/id_ed25519_personal
   IdentitiesOnly yes
+```
