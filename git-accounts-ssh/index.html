@@ -935,21 +935,23 @@ git push origin main
 </ul>
 <hr />
 <h2 id="sshconfig">💡 查看本地.ssh/config</h2>
-<ul>
-<li>cat ~/.ssh/config</li>
-</ul>
-<h1 id="_9">工作账号</h1>
-<p>Host github.com-work
-  HostName github.siri.apple.com
+<pre><code class="language-bash">cat ~/.ssh/config
+</code></pre>
+<p>本地示例：</p>
+<pre><code class="language-ssh"># 工作账号
+Host github.com-work
+  HostName github.company.com
   User git
   IdentityFile ~/.ssh/id_rsa
-  IdentitiesOnly yes</p>
-<h1 id="_10">个人账号</h1>
-<p>Host github.com-personal
+  IdentitiesOnly yes
+
+# 个人账号
+Host github.com-personal
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_ed25519_personal
-  IdentitiesOnly yes</p>
+  IdentitiesOnly yes
+</code></pre>
 
 
 
