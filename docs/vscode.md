@@ -68,6 +68,8 @@ brew install python
 
 * 每个项目使用独立 Python 版本和依赖
 * 避免系统环境污染
+* 可复现、方便部署，配合 requirements.txt 使用
+* 行业标准，便于团队协作
 
 #### 2. 创建虚拟环境（推荐使用 `venv`）
 
@@ -83,6 +85,9 @@ venv\Scripts\activate
 
 # 安装依赖
 pip install -r requirements.txt
+
+# 导出依赖
+pip freeze > requirements.txt
 ```
 
 #### 3. VS Code 配置虚拟环境
