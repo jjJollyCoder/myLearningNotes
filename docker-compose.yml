@@ -1,0 +1,11 @@
+# project-mkdocs/docker-compose.yml
+version: '1'
+
+services:
+  mkdocs:
+    image: squidfunk/mkdocs-material
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/docs
+    command: serve
