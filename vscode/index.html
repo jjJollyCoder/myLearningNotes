@@ -904,6 +904,8 @@
 <ul>
 <li>每个项目使用独立 Python 版本和依赖</li>
 <li>避免系统环境污染</li>
+<li>可复现、方便部署，配合 requirements.txt 使用</li>
+<li>行业标准，便于团队协作</li>
 </ul>
 <h4 id="2-venv">2. 创建虚拟环境（推荐使用 <code>venv</code>）</h4>
 <pre><code class="language-bash"># 创建 venv
@@ -917,6 +919,9 @@ venv\Scripts\activate
 
 # 安装依赖
 pip install -r requirements.txt
+
+# 导出依赖
+pip freeze &gt; requirements.txt
 </code></pre>
 <h4 id="3-vs-code">3. VS Code 配置虚拟环境</h4>
 <ul>
