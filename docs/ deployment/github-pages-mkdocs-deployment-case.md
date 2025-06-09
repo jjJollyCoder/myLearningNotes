@@ -2,7 +2,7 @@
 
 ---
 
-### 📘 文件名建议：`github-pages-mkdocs-deployment-case.md`
+### 2025-06-06 📘 文件名建议：`github-pages-mkdocs-deployment-case.md`
 
 ```markdown
 # GitHub Pages + MkDocs 自动部署失败排查案例（面试/回顾场景题）

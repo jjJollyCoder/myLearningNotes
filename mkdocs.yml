@@ -1,4 +1,6 @@
 site_name: My Learning Notes
+site_url: https://jjjollycoder.github.io/myLearningNotes/
+use_directory_urls: true
 theme:
   name: material
 
@@ -26,4 +28,4 @@ nav:
       - CI/CD 自动部署: deployment/ci-cd.md
 
   - 版本记录:
-      - 更新日志: changelog.md
+      - 更新日志: change-log.md

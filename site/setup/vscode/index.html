@@ -1,0 +1,1507 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jjjollycoder.github.io/myLearningNotes/setup/vscode/">
+      
+      
+        <link rel="prev" href="../git-accounts-ssh/">
+      
+      
+        <link rel="next" href="../python-virtualenv/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>VSCode 使用 - My Learning Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vs-code-python-from-0-to-1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Learning Notes" class="md-header__button md-logo" aria-label="My Learning Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Learning Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VSCode 使用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Learning Notes" class="md-nav__button md-logo" aria-label="My Learning Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Learning Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    环境配置
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            环境配置
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-accounts-ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git & SSH 配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    VSCode 使用
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    VSCode 使用
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-python-from-0-to-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 VS Code + Python 开发环境配置指南 From 0 to 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 VS Code + Python 开发环境配置指南 From 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 目录
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 基础安装场景
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 基础安装场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-python-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 1. 安装 Python 解释器（以 Mac 为例）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vs-code-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 2. 安装 VS Code 和 Python 插件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 3. 配置 Python 解释器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 VSCode 常见提示说明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 虚拟环境管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 虚拟环境管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 为什么需要虚拟环境？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 创建虚拟环境（推荐使用 venv）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. VS Code 配置虚拟环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 快速生成依赖列表
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧯 常见开发问题与解决方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 常见 VS Code 设置优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧰 常见 VS Code 设置优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-black" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 自动格式化工具（推荐 black）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-linter-flake8" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Linter 设置（推荐 flake8）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Jupyter Notebook 支持
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Python 项目结构建议
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 面试/答辩可讲亮点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 推荐工具与命令速查
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-virtualenv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python 虚拟环境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    开发基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            开发基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/flask-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flask 基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/database-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据库 API 使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/orm-sqlalchemy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ORM(SQLAlchemy)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/bootstrap-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bootstrap 笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    可视化与文档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            可视化与文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualization/mermaid-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mermaid 示例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualization/markdown-style-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Markdown 编写规范
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    部署与上线
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            部署与上线
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/github-pages-mkdocs-deployment-case.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub Pages 部署案例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/docker-deployment.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker 部署
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/ci-cd.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI/CD 自动部署
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    版本记录
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            版本记录
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    更新日志
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-python-from-0-to-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 VS Code + Python 开发环境配置指南 From 0 to 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 VS Code + Python 开发环境配置指南 From 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 目录
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 基础安装场景
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 基础安装场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-python-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 1. 安装 Python 解释器（以 Mac 为例）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vs-code-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 2. 安装 VS Code 和 Python 插件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 3. 配置 Python 解释器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 VSCode 常见提示说明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 虚拟环境管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 虚拟环境管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 为什么需要虚拟环境？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 创建虚拟环境（推荐使用 venv）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. VS Code 配置虚拟环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 快速生成依赖列表
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧯 常见开发问题与解决方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 常见 VS Code 设置优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧰 常见 VS Code 设置优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-black" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 自动格式化工具（推荐 black）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-linter-flake8" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Linter 设置（推荐 flake8）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Jupyter Notebook 支持
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Python 项目结构建议
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 面试/答辩可讲亮点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 推荐工具与命令速查
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>VSCode 使用</h1>
+
+<h2 id="vs-code-python-from-0-to-1">🧠 VS Code + Python 开发环境配置指南 From 0 to 1</h2>
+<blockquote>
+<p>一份系统的 VS Code + Python 环境配置笔记，适合自学、查阅、复习、面试讲解。</p>
+</blockquote>
+<hr />
+<h3 id="_1">📌 目录</h3>
+<ol>
+<li><a href="#基础安装场景">基础安装场景</a></li>
+<li><a href="#vscode-常见提示说明">VS Code 常见提示说明</a></li>
+<li><a href="#虚拟环境管理">虚拟环境管理</a></li>
+<li><a href="#常见开发问题与解决方法">常见开发问题与解决方法</a></li>
+<li><a href="#常见-vs-code-设置优化">常见 VS Code 设置优化</a></li>
+<li><a href="#python-项目结构建议">Python 项目结构建议</a></li>
+<li><a href="#面试答辩可讲亮点">面试/答辩可讲亮点</a></li>
+</ol>
+<hr />
+<h3 id="_2">✅ 基础安装场景</h3>
+<h4 id="1-python-mac">📦 1. 安装 Python 解释器（以 Mac 为例）</h4>
+<pre><code class="language-bash">brew install python
+</code></pre>
+<p>或去官网下载：<a href="https://www.python.org/downloads/mac-osx/">https://www.python.org/downloads/mac-osx/</a></p>
+<p><strong>安装时注意：</strong></p>
+<ul>
+<li>确保 <code>python3</code> 和 <code>pip3</code> 可用</li>
+<li><code>python</code> 可能仍指向系统自带版本，需确认路径：<code>which python3</code></li>
+</ul>
+<h4 id="2-vs-code-python">🧩 2. 安装 VS Code 和 Python 插件</h4>
+<ul>
+<li>下载 VS Code：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+<li>
+<p>打开 VS Code → 左侧扩展（⇧ + ⌘ + X）→ 搜索并安装：</p>
+</li>
+<li>
+<p>✅ <code>Python</code>（by Microsoft）</p>
+</li>
+<li>✅ 推荐：<code>Pylance</code>（类型提示 + 智能补全）</li>
+<li>✅ 推荐：<code>Jupyter</code>（支持 <code>.ipynb</code>）</li>
+</ul>
+<h4 id="3-python">🛠 3. 配置 Python 解释器</h4>
+<p>在 VS Code 命令面板选择解释器：</p>
+<pre><code>⇧ + ⌘ + P → Python: Select Interpreter
+</code></pre>
+<p>选择正确的 <code>python3</code> 路径（或虚拟环境路径）。</p>
+<hr />
+<h3 id="vscode">📝 VSCode 常见提示说明</h3>
+<table>
+<thead>
+<tr>
+<th>提示</th>
+<th>原因</th>
+<th>应对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Do you want to install the recommended Python extension?</code></td>
+<td>VS Code 识别到 Python 文件但未装插件</td>
+<td>点“Install”或手动装</td>
+</tr>
+<tr>
+<td><code>Select Python interpreter</code></td>
+<td>当前工作区未设置解释器</td>
+<td>选择系统/虚拟环境</td>
+</tr>
+<tr>
+<td><code>Linter not installed</code></td>
+<td>代码检查工具未配置</td>
+<td>安装并设置，如 <code>flake8</code>, <code>pylint</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_3">🧪 虚拟环境管理</h3>
+<h4 id="1">1. 为什么需要虚拟环境？</h4>
+<ul>
+<li>每个项目使用独立 Python 版本和依赖</li>
+<li>避免系统环境污染</li>
+<li>可复现、方便部署，配合 requirements.txt 使用</li>
+<li>行业标准，便于团队协作</li>
+</ul>
+<h4 id="2-venv">2. 创建虚拟环境（推荐使用 <code>venv</code>）</h4>
+<pre><code class="language-bash"># 创建 venv
+python3 -m venv venv
+
+# 激活 (Mac/Linux)
+source venv/bin/activate
+
+# 激活 (Windows)
+venv\Scripts\activate
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 导出依赖
+pip freeze &gt; requirements.txt
+</code></pre>
+<h4 id="3-vs-code">3. VS Code 配置虚拟环境</h4>
+<ul>
+<li>创建或打开 <code>.vscode/settings.json</code>：</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;python.pythonPath&quot;: &quot;venv/bin/python&quot;
+}
+</code></pre>
+<ul>
+<li>或使用 <code>Python: Select Interpreter</code> 自动识别</li>
+</ul>
+<h4 id="4">4. 快速生成依赖列表</h4>
+<pre><code class="language-bash">pip freeze &gt; requirements.txt
+</code></pre>
+<hr />
+<h3 id="_4">🧯 常见开发问题与解决方法</h3>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VS Code 无法识别虚拟环境</td>
+<td>没有选择虚拟环境作为解释器</td>
+<td>手动选择 <code>.venv/bin/python</code></td>
+</tr>
+<tr>
+<td>pip 安装慢</td>
+<td>默认源在国外</td>
+<td>使用国内源，例如清华：<code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 包名</code></td>
+</tr>
+<tr>
+<td>VS Code 提示“ModuleNotFoundError”</td>
+<td>虚拟环境未激活或未选对解释器</td>
+<td>激活虚拟环境或切换解释器</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="vs-code">🧰 常见 VS Code 设置优化</h3>
+<h4 id="1-black">1. 自动格式化工具（推荐 black）</h4>
+<pre><code class="language-bash">pip install black
+</code></pre>
+<pre><code class="language-jsonc">// .vscode/settings.json
+{
+  &quot;python.formatting.provider&quot;: &quot;black&quot;,
+  &quot;editor.formatOnSave&quot;: true
+}
+</code></pre>
+<h4 id="2-linter-flake8">2. Linter 设置（推荐 flake8）</h4>
+<pre><code class="language-bash">pip install flake8
+</code></pre>
+<pre><code class="language-jsonc">{
+  &quot;python.linting.flake8Enabled&quot;: true,
+  &quot;python.linting.enabled&quot;: true
+}
+</code></pre>
+<h4 id="3-jupyter-notebook">3. Jupyter Notebook 支持</h4>
+<ul>
+<li>安装插件 <code>Jupyter</code></li>
+<li>项目中可以直接运行 <code>.ipynb</code> 文件</li>
+<li>虚拟环境中需安装 <code>ipykernel</code>：</li>
+</ul>
+<pre><code class="language-bash">pip install ipykernel
+</code></pre>
+<hr />
+<h3 id="python">📁 Python 项目结构建议</h3>
+<pre><code class="language-text">my_project/
+│
+├── venv/                  # 虚拟环境
+├── .vscode/               # VS Code 配置
+│   └── settings.json
+├── src/                   # 源代码目录
+│   └── main.py
+├── tests/                 # 测试目录
+│   └── test_main.py
+├── requirements.txt       # 项目依赖
+└── README.md              # 项目说明
+</code></pre>
+<hr />
+<h3 id="_5">💡 面试/答辩可讲亮点</h3>
+<ol>
+<li><strong>虚拟环境管理经验</strong>：能讲清楚为什么用 venv，怎么管理不同项目依赖。</li>
+<li><strong>VS Code 配置细节</strong>：熟练配置解释器、插件、格式化工具。</li>
+<li><strong>开发环境隔离</strong>：避免依赖冲突，能快速部署新机器开发环境。</li>
+<li><strong>项目结构合理</strong>：代码、测试、依赖分离清晰。</li>
+<li><strong>自动化与规范</strong>：如使用 <code>black</code>、<code>flake8</code> 保证代码一致性。</li>
+</ol>
+<hr />
+<h3 id="_6">📚 推荐工具与命令速查</h3>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>命令/作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建虚拟环境</td>
+<td><code>python3 -m venv venv</code></td>
+</tr>
+<tr>
+<td>激活虚拟环境</td>
+<td><code>source venv/bin/activate</code></td>
+</tr>
+<tr>
+<td>安装依赖</td>
+<td><code>pip install xxx</code></td>
+</tr>
+<tr>
+<td>保存依赖</td>
+<td><code>pip freeze &gt; requirements.txt</code></td>
+</tr>
+<tr>
+<td>安装插件</td>
+<td>VS Code 左侧扩展搜索安装</td>
+</tr>
+<tr>
+<td>切换解释器</td>
+<td><code>⇧ + ⌘ + P</code> → Python: Select Interpreter</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
