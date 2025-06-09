@@ -9,3 +9,4 @@ nav:
   - Mermaid 图: mermaid-examples.md
   - Git 多账户与 SSH: git-accounts-ssh.md
   - 数据库与 API: database-api.md
+  - vscode基础: vscode.md
