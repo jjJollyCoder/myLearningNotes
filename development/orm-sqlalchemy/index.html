@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#sqlalchemy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -417,6 +422,21 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ORM(SQLAlchemy)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -429,6 +449,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装依赖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义模型
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建数据库表
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      查询数据
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flask-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      推荐使用 Flask-Migrate 管理数据迁移
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -533,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../visualization/markdown-style-guide.md" class="md-nav__link">
+      <a href="../../visualization/markdown-style-guide/" class="md-nav__link">
         
   
   
@@ -755,6 +839,61 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装依赖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义模型
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建数据库表
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      查询数据
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flask-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      推荐使用 Flask-Migrate 管理数据迁移
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -770,9 +909,36 @@
 
 
 
-  <h1>ORM(SQLAlchemy)</h1>
+<h1 id="sqlalchemy">使用 SQLAlchemy 进行数据库建模</h1>
+<p>SQLAlchemy 是 Flask 项目中常用的 ORM 工具，用于简化数据库操作。</p>
+<h2 id="_1">安装依赖</h2>
+<pre><code class="language-bash">pip install flask-sqlalchemy
+````
 
+## 配置 Flask 应用
 
+```python
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config[&quot;SQLALCHEMY_DATABASE_URI&quot;] = &quot;sqlite:///app.db&quot;
+db = SQLAlchemy(app)
+</code></pre>
+<h2 id="_2">定义模型</h2>
+<pre><code class="language-python">class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+</code></pre>
+<h2 id="_3">创建数据库表</h2>
+<pre><code class="language-bash">flask shell
+&gt;&gt;&gt; from app import db
+&gt;&gt;&gt; db.create_all()
+</code></pre>
+<h2 id="_4">查询数据</h2>
+<pre><code class="language-python">User.query.filter_by(username=&quot;alice&quot;).first()
+</code></pre>
+<h2 id="flask-migrate">推荐使用 Flask-Migrate 管理数据迁移</h2>
 
 
 

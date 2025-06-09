@@ -16,7 +16,7 @@
     
     
       
-        <title>Docker deployment - My Learning Notes</title>
+        <title>使用 Docker 部署 Flask 项目 - My Learning Notes</title>
       
     
     
@@ -57,6 +57,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#docker-flask" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker deployment
+              使用 Docker 部署 Flask 项目
             
           </span>
         </div>
@@ -519,7 +524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../visualization/markdown-style-guide.md" class="md-nav__link">
+      <a href="../../visualization/markdown-style-guide/" class="md-nav__link">
         
   
   
@@ -741,6 +746,43 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建 Dockerfile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动容器
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      多文件结构时注意事项
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -756,9 +798,31 @@
 
 
 
-  <h1>Docker deployment</h1>
+<h1 id="docker-flask">使用 Docker 部署 Flask 项目</h1>
+<h2 id="dockerfile">创建 <code>Dockerfile</code></h2>
+<pre><code class="language-dockerfile">FROM python:3.10-slim
 
+WORKDIR /app
 
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [&quot;python&quot;, &quot;app.py&quot;]
+````
+
+## 构建镜像
+
+```bash
+docker build -t flask-app .
+</code></pre>
+<h2 id="_1">启动容器</h2>
+<pre><code class="language-bash">docker run -d -p 5000:5000 flask-app
+</code></pre>
+<h2 id="_2">多文件结构时注意事项</h2>
+<p>确保 <code>app.py</code>、模块和配置路径正确挂载进容器中。</p>
+<p>````</p>
 
 
 

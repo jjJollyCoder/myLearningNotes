@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#python" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -303,6 +308,21 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Python 虚拟环境
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -315,6 +335,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建虚拟环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装依赖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      退出虚拟环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      提示
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -533,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../visualization/markdown-style-guide.md" class="md-nav__link">
+      <a href="../../visualization/markdown-style-guide/" class="md-nav__link">
         
   
   
@@ -755,6 +830,52 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建虚拟环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装依赖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      退出虚拟环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      提示
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -770,9 +891,35 @@
 
 
 
-  <h1>Python 虚拟环境</h1>
+<h1 id="python">Python 虚拟环境配置指南</h1>
+<p>为了保持项目依赖隔离，推荐为每个项目使用独立的虚拟环境。</p>
+<h2 id="_1">创建虚拟环境</h2>
+<pre><code class="language-bash">python3 -m venv venv
+````
 
+## 激活虚拟环境
 
+* macOS / Linux:
+
+```bash
+source venv/bin/activate
+</code></pre>
+<ul>
+<li>Windows:</li>
+</ul>
+<pre><code class="language-bash">venv\Scripts\activate
+</code></pre>
+<h2 id="_2">安装依赖</h2>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+<h2 id="_3">退出虚拟环境</h2>
+<pre><code class="language-bash">deactivate
+</code></pre>
+<h2 id="_4">提示</h2>
+<ul>
+<li>建议使用 <code>.gitignore</code> 忽略虚拟环境文件夹：</li>
+</ul>
+<p><code>venv/</code></p>
 
 
 

@@ -16,7 +16,7 @@
     
     
       
-        <title>Ci cd - My Learning Notes</title>
+        <title>使用 GitHub Actions 实现自动部署 - My Learning Notes</title>
       
     
     
@@ -57,6 +57,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#github-actions" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ci cd
+              使用 GitHub Actions 实现自动部署
             
           </span>
         </div>
@@ -519,7 +524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../visualization/markdown-style-guide.md" class="md-nav__link">
+      <a href="../../visualization/markdown-style-guide/" class="md-nav__link">
         
   
   
@@ -741,6 +746,25 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#githubworkflowsdeployyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建 .github/workflows/deploy.yml
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -756,9 +780,36 @@
 
 
 
-  <h1>Ci cd</h1>
+<h1 id="github-actions">使用 GitHub Actions 实现自动部署</h1>
+<h2 id="githubworkflowsdeployyml">创建 <code>.github/workflows/deploy.yml</code></h2>
+<p>```yaml
+name: Deploy Docs</p>
+<p>on:
+  push:
+    branches: [ main ]</p>
+<p>jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3</p>
+<pre><code>  - name: 安装 Python
+    uses: actions/setup-python@v4
+    with:
+      python-version: 3.10
 
+  - name: 安装 MkDocs
+    run: |
+      pip install mkdocs mkdocs-material
 
+  - name: 部署到 GitHub Pages
+    run: mkdocs gh-deploy --force
+</code></pre>
+<pre><code>
+## 自动部署说明
+
+* 每次 `main` 分支代码更新，将自动重新构建并发布文档。
+
+</code></pre>
 
 
 
