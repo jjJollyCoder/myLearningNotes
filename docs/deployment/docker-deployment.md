@@ -157,5 +157,141 @@ docker run -d -p 5000:5000 flask-app
 
 确保 `app.py`、模块和配置路径正确挂载进容器中。
 
-````
+
+
+* **镜像构建与迁移**
+* **运行与访问**
+* **开发环境管理**
+
+---
+
+# Flask + Docker 场景问答汇总
+
+---
+
+## 1. 镜像构建与迁移
+
+### Q1: 如何在本地构建 Flask 项目的 Docker 镜像？
+
+```markdown
+- 使用命令：`docker build -t myflaskapp:latest .`
+- 需要在项目根目录，确保有正确的 `Dockerfile` 和依赖文件（如 `requirements.txt`）
+- 镜像名可自定义
+```
+
+---
+
+### Q2: 如何将本地构建好的 Docker 镜像导出成文件，方便传输？
+
+```markdown
+- 使用命令：`docker save myflaskapp:latest -o myflaskapp_latest.tar`
+- 生成 `.tar` 文件后可用U盘或网络传输到其他机器
+```
+
+---
+
+### Q3: 如何在另一台电脑导入并运行导出的 Docker 镜像？
+
+```markdown
+- 导入镜像：`docker load -i myflaskapp_latest.tar`
+- 启动容器：`docker run -p 5001:5001 myflaskapp:latest`
+- 访问服务：通过 `http://localhost:5001` 或该机器的局域网IP访问
+```
+
+---
+
+### Q4: 是否可以通过远程仓库（Docker Hub）管理和分享镜像？
+
+```markdown
+- 可以，将镜像推送到 Docker Hub
+- 推送命令：
+  - `docker tag myflaskapp:latest yourdockerhubid/myflaskapp:latest`
+  - `docker push yourdockerhubid/myflaskapp:latest`
+- 另一台机器拉取：
+  - `docker pull yourdockerhubid/myflaskapp:latest`
+- 启动方式同上
+```
+
+---
+
+## 2. 运行与访问
+
+### Q5: Docker 容器运行 Flask 项目后，如何让局域网内其他设备访问？
+
+```markdown
+- 确保容器端口映射到宿主机端口（例如 `-p 5001:5001`）
+- Flask 代码中运行时需设置 `host='0.0.0.0'`
+- 使用宿主机局域网IP和映射端口访问，如 `http://192.168.x.x:5001`
+- 宿主机防火墙需允许该端口访问
+```
+
+---
+
+### Q6: 如果访问 Flask 应用时部分静态资源或页面功能缺失，如何排查？
+
+```markdown
+- 查看 Flask 运行终端或 Docker 容器日志，确认静态资源请求是否返回404或其它错误
+- 检查 URL 路径拼写及 `url_for('static', filename='...')` 是否正确
+- 确认前端静态文件是否完整复制到 Docker 镜像中
+- 用手机浏览器开发者工具查看加载的资源请求及错误信息
+```
+
+---
+
+### Q7: 修改了前端静态文件（js、css）后，是否需要重启 Docker 容器？
+
+```markdown
+- 如果静态文件在镜像内，修改后需重新构建镜像并重启容器
+- 开发时可使用“代码挂载卷”方式，无需重启容器即可实时生效
+```
+
+---
+
+## 3. 开发环境管理
+
+### Q8: 通过 Docker 运行项目，是否还需要在个人电脑上安装 Python 和依赖？
+
+```markdown
+- **不一定。**
+- Docker 镜像包含所有运行时环境，正常运行只需安装 Docker 即可
+- 但如果你需要频繁修改代码和调试，推荐：
+  - 在宿主机装 Python + 依赖，方便调试
+  - 或使用 Docker 卷挂载代码，实现热更新
+```
+
+---
+
+### Q9: 如何实现代码修改实时反映到运行的 Docker 容器？
+
+```markdown
+- 运行容器时挂载宿主机代码目录：
+```
+
+docker run -p 5001:5001 -v /本地代码路径:/app myflaskapp\:latest
+
+```
+- Flask 应用需开启 debug 模式，支持自动重载代码
+```
+
+---
+
+### Q10: 为什么要使用 Docker 部署 Flask 项目？
+
+```markdown
+- 环境一致性：确保所有开发、测试、生产环境中 Python 版本、依赖完全相同
+- 方便迁移：一键构建、一键运行，无需复杂环境配置
+- 多人协作：团队成员环境统一，减少“我这能跑”问题
+- 方便扩展和运维：结合 docker-compose、Kubernetes等进行自动化管理
+```
+
+---
+
+# 总结
+
+* 使用 Docker 打包环境，方便项目迁移和部署
+* 通过端口映射和配置，支持局域网访问
+* 代码热更新通过挂载目录实现，提升开发效率
+* 线上部署时建议搭配 docker-compose 或云端容器服务
+
+---
 

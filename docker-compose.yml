@@ -1,11 +1,14 @@
 # project-mkdocs/docker-compose.yml
-version: '1'
+# version: '3.8'
 
 services:
   mkdocs:
-    image: squidfunk/mkdocs-material
+    build: .      
+    # build: . 和image这个官方镜像冲突了，
+    # image: squidfunk/mkdocs-material
     ports:
       - "8000:8000"
     volumes:
       - .:/docs
-    command: serve
+    command: mkdocs serve -a 0.0.0.0:8000
+    restart: unless-stopped
