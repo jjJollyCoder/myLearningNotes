@@ -2,58 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/change-log/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/deployment/ci-cd/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/deployment/docker-deployment/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/deployment/github-pages-mkdocs-deployment-case/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/development/bootstrap-notes/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/development/database-api/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/development/flask-basics/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/development/orm-sqlalchemy/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/setup/git-accounts-ssh/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/setup/python-virtualenv/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/setup/vscode/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/visualization/markdown-style-guide/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
     <url>
          <loc>https://jjjollycoder.github.io/myLearningNotes/visualization/mermaid-examples/</loc>
-         <lastmod>2025-06-09</lastmod>
+         <lastmod>2025-06-10</lastmod>
     </url>
 </urlset>
