@@ -145,9 +145,154 @@ https://zhangsan.github.io/myLearningNotes/
 **个人贡献：** 独立排查所有配置错误并最终上线部署页面
 **总结：** 理解了 GitHub Actions + Pages 的完整工作原理，熟悉 CI/CD 流程关键点。
 
-```
+
+# 场景题：本地和远程 main 分支不同步导致推送失败问题排查与解决
 
 ---
 
-如果你需要我再生成一个 `README.md` 入口链接这篇文档，也可以告诉我，我可以一并整理好放进你的项目目录结构。
+## 场景背景
+
+- 开发者在本地修改了代码并提交到 `main` 分支。  
+- 尝试执行 `git push origin main` 推送到远程仓库时，遇到权限错误提示：  
 ```
+
+[git@github.com](mailto:git@github.com): Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+````
+- 但发现 GitHub Pages 上内容已有最新更新，怀疑推送是否成功。  
+- 需要确认本地和远程分支是否同步，定位问题原因，并最终解决推送失败的问题。
+
+---
+
+## 发现问题步骤
+
+1. **检查本地和远程 `main` 分支的最新提交差异**
+
+ 通过以下命令查看本地和远程 `main` 分支的最新提交时间和提交记录是否一致：
+
+ ```bash
+ git log main -1
+ git log origin/main -1
+````
+
+* 发现本地 `main` 分支的最新提交时间为“今天”，
+* 远程 `origin/main` 的最新提交时间为“昨天”，说明两者不同步。
+
+2. **确认推送失败的权限问题**
+
+   本地执行 `git push` 时提示 `Permission denied (publickey)`，说明 SSH 认证失败，导致推送未成功。
+
+---
+
+## 问题排查及解决方案
+
+### 1. 检查 SSH 配置
+
+* 查看本地 `.ssh/config`，确认是否为不同账号配置了不同的 Host，比如：
+
+  ```ssh
+  Host github.com-personal
+      HostName github.com
+      User git
+      IdentityFile ~/.ssh/id_rsa_personal
+  ```
+
+* 查看远程仓库地址：
+
+  ```bash
+  git remote -v
+  ```
+
+  确认远程地址是否使用了自定义 Host，如：
+
+  ```
+  git@github.com-personal:username/repo.git
+  ```
+
+### 2. 测试 SSH 连接是否正常
+
+* 根据远程地址中的 Host，执行对应的测试命令：
+
+  ```bash
+  ssh -T git@github.com-personal
+  ```
+
+* 正常连接会显示：
+
+  ```
+  Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+  ```
+
+* 如果显示权限错误，需检查 SSH key 是否已添加到 GitHub，或者本地配置是否正确。
+
+### 3. 修改远程地址（如果需要）
+
+* 若远程地址与 `.ssh/config` 中 Host 不对应，执行：
+
+  ```bash
+  git remote set-url origin git@github.com-personal:username/repo.git
+  ```
+
+* 确保 `git remote -v` 中显示的地址正确。
+
+### 4. 确认本地与远程分支合并状态
+
+* 拉取远程最新代码，合并到本地：
+
+  ```bash
+  git fetch origin
+  git merge origin/main
+  ```
+
+  或者：
+
+  ```bash
+  git pull --rebase origin main
+  ```
+
+### 5. 推送本地代码
+
+* 执行推送命令：
+
+  ```bash
+  git push origin main
+  ```
+
+* 若仍遇到权限问题，可开启详细 SSH 日志：
+
+  ```bash
+  GIT_SSH_COMMAND="ssh -v" git push origin main
+  ```
+
+  通过日志进一步定位问题。
+
+---
+
+## 验证结果
+
+* 推送成功后，再次执行：
+
+  ```bash
+  git log origin/main -1
+  git log main -1
+  ```
+
+* 确认本地和远程 `main` 分支的提交一致，完成同步。
+
+---
+
+## 总结
+
+* 本地和远程分支不同步可能导致代码无法推送成功。
+* 权限拒绝多半与 SSH key 配置或远程地址 Host 设置不匹配有关。
+* 通过查看远程地址、自定义 SSH Host 配置、测试 SSH 连接等方式排查问题。
+* 确保远程地址与 SSH 配置匹配，推送时才能正常认证和上传代码。
+* 合理使用 `git fetch`、`git merge` 保持本地分支与远程分支同步，避免冲突。
+
+---
+
+*以上为实际问题排查和解决的总结记录*
+
+
+
