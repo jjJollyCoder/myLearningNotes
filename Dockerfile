@@ -10,6 +10,9 @@ RUN pip install mkdocs-material
 # 设置工作目录
 WORKDIR /docs
 
+# 3. 拷贝项目文件
+COPY . .
+
 # 暴露 mkdocs 默认端口
 EXPOSE 8000
 

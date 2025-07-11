@@ -1,7 +1,6 @@
-# 文档配置主入口
 site_name: My Learning Notes
-# site_url: https://jjjollycoder.github.io/myLearningNotes/
-# use_directory_urls: true
+site_url: https://jjjollycoder.github.io/myLearningNotes/
+use_directory_urls: true
 theme:
   name: material
 
